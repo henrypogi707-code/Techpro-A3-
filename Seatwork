@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("How many grades (1 to 5)? ");
+        int numGrades = scanner.nextInt();
+
+        if (numGrades < 1 || numGrades > 5) {
+            System.out.println("Invalid number of grades.");
+            return;
+        }
+
+        double sum = 0;
+        for (int i = 1; i <= numGrades; i++) {
+            System.out.print("Enter grade " + i + ": ");
+            sum += scanner.nextDouble();
+        }
+
+        double average = sum / numGrades;
+        System.out.println("Average: " + average);
+
+        char letterGrade = getLetterGrade(average);
+        System.out.println("Letter grade: " + letterGrade);
+
+        scanner.close();
+    }
+
+    public static char getLetterGrade(double average) {
+        if (average >= 90) return 'A';
+        else if (average >= 80) return 'B';
+        else if (average >= 70) return 'C';
+        else if (average >= 60) return 'D';
+        else return 'F';
+    }
+}
